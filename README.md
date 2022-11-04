@@ -1,7 +1,7 @@
 # baykar-tech
 This project was created to purchase baykar products.
 
-##How to run:
+## How to run:
 
 docker compose-up && python manage.py migrate
 // Must be sh file 
