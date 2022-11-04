@@ -3,7 +3,7 @@ from django.db.transaction import atomic
 from products.models import Product, Attribute
 
 
-class ProductService():
+class ProductService(object):
     def create_product(self, barcode_number=None, *args, **kwargs):
         """
         This method writen for create product
@@ -27,6 +27,8 @@ class ProductService():
         product.set_attributes(**attributes)
         product.save()
 
+        return product
+
     def update_product(self, instance, **kwargs):
         """
         Add only existing features
@@ -48,7 +50,7 @@ class ProductService():
         instance.save()
 
 
-class AttributeService():
+class AttributeService(object):
 
     def create_attribute(self, name, **kwargs):
         pass
@@ -60,3 +62,4 @@ class AttributeService():
 
         except Attribute.DoesNotExist:# TODO customer exception ex: Böyle bir attribute bulunamadı
             return
+

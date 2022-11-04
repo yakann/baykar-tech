@@ -11,8 +11,10 @@ class Product(StarterModel, models.Model):
     barcode = models.CharField(max_length=16)
     title = models.CharField(max_length=65)
     description = models.CharField(max_length=165)
-    type = EnumField(ProductType, null=True, blank=True)
+    product_type = EnumField(ProductType, null=True, blank=True)
     attributes = models.JSONField(null=True, default={})
+    producer = models.CharField(max_length=100) # TODO this field and brand must be model --> ForeignKey
+    brand = models.CharField(max_length=100)
     is_active = models.BooleanField()
 
     # TODO language_field for different language
@@ -45,7 +47,7 @@ class Product(StarterModel, models.Model):
 
 class Attribute(StarterModel, models.Model):
     name = models.CharField(max_length=35)
-    type = EnumField(AttributeType, null=True, blank=True)
+    attribute_type = EnumField(AttributeType, null=True, blank=True)
 
     def __str__(self):
         return self.name
